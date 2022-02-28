@@ -20,19 +20,36 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+from nis import cat
+from ossaudiodev import control_labels
 import config as cf
 import model
 import csv
 
-
 """
 El controlador se encarga de mediar entre la vista y el modelo.
 """
-
+def newController():
+    """
+    Crea una instancia del modelo
+    """
+    control={'model':None}
+    control['model']=model.newCatalog()
+    return control
 # Inicialización del Catálogo de libros
 
 # Funciones para la carga de datos
+def loasData(control):
+    catalog=control['model']
+    artists=loadArtists(catalog)
+    albums=loadAlbums(catalog)
+    tracks=loadTracks(catalog)
+    return artists,albums,tracks
 
+def loadArtist(catlog):
+    artistfile=cf.data_dir+'Spotify/spotify-artists-utf8-small.csv'
+    input_file= csv.DictReader(open(artistfile,enconding='utf-8'))
+    
 # Funciones de ordenamiento
 
 # Funciones de consulta sobre el catálogo
