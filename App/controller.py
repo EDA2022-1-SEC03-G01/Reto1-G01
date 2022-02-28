@@ -46,10 +46,27 @@ def loasData(control):
     tracks=loadTracks(catalog)
     return artists,albums,tracks
 
-def loadArtist(catlog):
+def loadArtists(catalog):
     artistfile=cf.data_dir+'Spotify/spotify-artists-utf8-small.csv'
     input_file= csv.DictReader(open(artistfile,enconding='utf-8'))
-    
+    for artist in input_file:
+        model.addArtist(catalog,artist)
+    return model.artistsSize(catalog)
+
+def loadTracks(catalog):
+    tracksFile=cf.data_dir+'Spotify/spotify-tracks-utf8-small.csv'
+    input_file= csv.DictReader(open(tracksFile,encoding='utf-8'))
+    for track in input_file:
+        model.addTrack(catalog,track)
+    return model.tracksSize(catalog)
+
+def loadAlbums (catalog):
+    albumsFile=cf.data_dir+'Spotify/spotify-tracks-utf8-small.csv'
+    input_file=csv.DictReader(open(albumsFile,encoding='utf-8'))
+    for album in input_file:
+        model.addAlbum(catalog,album)
+    return model.albumsSize(catalog)
+
 # Funciones de ordenamiento
 
-# Funciones de consulta sobre el catálogo
+# Funciones de consulta sobre el catálog
