@@ -43,13 +43,7 @@ def newController():
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- Listar los álbunes en un periodo de tiempo")
-    print("3- Encontrar los artistas más populares")
-    print("4- Encontrar las canciones más populares")
-    print("5- Encontrar la canción más popular de un artista")
-    print("6- Encontar la discografía de un artista")
-    print("7- Clasificar las canciones con mayor distribución")
-    print("0- Salir")
+    print("2- 
 
 def loadData():
     """
@@ -70,20 +64,4 @@ while True:
         print("Cargando información de los archivos ....")
         artist,albums,tracks=loadData()
     elif int(inputs[0]) == 2:
-        p_tiempo=input('Ingrese el periodo de tiempo del cual desea listar los albunes: ')
-        print('Linstando albunes...')
-    elif int(inputs[0])==3:
-        print('Encontrando los artistas mas populares...')
-    elif int(inputs[0])==4:
-        print('Encontrando las canciones mas populares...')
-    elif int(inputs[0])==5:
-        artista=input('Ingrese el nombre del artitas del que desea saber su cancion mas popular: ')
-        print('Encontrando la cancion mas popular del artista...')
-    elif int(inputs[0])==6:
-        artista=input('Ingrese el nombre del artitas del que desea saber su discografia: ')
-        print('Encontrando la discografia del artista...')
-    elif int(inputs[0])==7:
-        print('Clasificando las canciones con mayor distribución...')
-    else:
-        sys.exit(0)
-sys.exit(0)
+
