@@ -39,7 +39,7 @@ def newController():
 # Inicialización del Catálogo de libros
 
 # Funciones para la carga de datos
-def loasData(control):
+def loadData(control):
     catalog=control['model']
     artists=loadArtists(catalog)
     albums=loadAlbums(catalog)
@@ -61,7 +61,7 @@ def loadTracks(catalog):
     return model.tracksSize(catalog)
 
 def loadAlbums (catalog):
-    albumsFile=cf.data_dir+'Spotify/spotify-tracks-utf8-small.csv'
+    albumsFile=cf.data_dir+'Spotify/spotify-albums-utf8-small.csv'
     input_file=csv.DictReader(open(albumsFile,encoding='utf-8'))
     for album in input_file:
         model.addAlbum(catalog,album)
