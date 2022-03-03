@@ -24,8 +24,6 @@
  * Dario Correal - Version inicial
  """
 
-
-from gettext import Catalog
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
@@ -37,7 +35,14 @@ los mismos.
 """
 
 # Construccion de modelos
-def newCatalog():
+def newCatalog() -> None:
+    '''
+    Incializa el catalogo de libros. Crea una lista vacia paraguardar
+    todos los libros, adicionalmente, crea una lista vacia para los artistas,
+    los albumes y las canciones
+    Retorna:
+        dict: retorna el catalogo con las listas inicializadas
+    '''
     catalog={'artist':None,'albums':None,'tracks':None}
     catalog['artist']=lt.newList('ARRAY_LIST')
     catalog['albums']=lt.newList('ARRAY_LIST')
@@ -45,14 +50,16 @@ def newCatalog():
     return catalog
 
 # Funciones para agregar informacion al catalogo
-def addTrack(catalog,track):
-    lt.addLast(catalog['tracks'],track)
-    artists=track['artists'].split(",")
-    for artist in artists:
-        addArtist(catalog,artist.strp(),track)
-    return catalog
+def addTrack(catalog: dict,trackName: str):
+    tracks=catalog['tracks']
+    posTrack=lt.isPresent(tracks,trackName)
+    if posTrack > 0:
+        track=lt.getElement(tracks,trackName)
+    else:
+        track=newTrack(trackName)
+        lt.addLast(tracks,track)
 
-def addArtist(catalog,artistName,):
+def addArtist(catalog: dict,artistName: str):
     artists=catalog['artists']
     posArtist=lt.isPresent(artists,artistName)
     if posArtist > 0:
@@ -63,22 +70,50 @@ def addArtist(catalog,artistName,):
     #Aca añadir las sublistas necesarias de los artistas
     return catalog
 
-def addAlbum(catalog,album):
+def addAlbum(catalog: dict,albumName:str):
     albums=catalog['albums']
     t=newAlbum(album['album_name'],)
 
+def addArtist(catalog: dict, artist: dict):
+    pass
+
+def addAlbum(catalog, album):
+    pass
+
+def addTrack(catalog,track):
+    pass
+
+
+
 
 # Funciones para creacion de datos
+def newArtist(artist):
+    pass
+
+def newAlbum(album):
+    pass
+
+def newTrack(track):
+    pass
 
 # Funciones de consulta
-def tracksSize(catalog):
+def tracksSize(catalog: dict) -> int:
     return lt.size(catalog['books'])
 
-def albumsSize(catalog):
+def albumsSize(catalog: dict) -> int:
     return lt.size(catalog['albums'])
 
-def artistsSize(catalog):
+def artistsSize(catalog:dict) -> int:
     return lt.size(catalog['artist'])
-# Funciones utilizadas para comparar elementos dentro de una lista
 
+# Funciones utilizadas para comparar elementos dentro de una lista
+def compareArtist(artistName: int,artist: dict):
+    if artistName.lower()==artist['name'].lower():
+        return 0
+    elif artistName.lower()>artist['name'].lower():
+        return 1
+    else:
+        return -1
+def comparAlbums(albumId, album):
+    pass
 # Funciones de ordenamiento
