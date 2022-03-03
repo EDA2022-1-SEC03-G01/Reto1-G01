@@ -72,7 +72,7 @@ def addArtist(catalog: dict,artistName: str):
 
 def addAlbum(catalog: dict,albumName:str):
     albums=catalog['albums']
-    t=newAlbum(album['album_name'],)
+    t=newAlbum(catalog, albumName)
 
 def addArtist(catalog: dict, artist: dict):
     pass
@@ -87,13 +87,13 @@ def addTrack(catalog,track):
 
 
 # Funciones para creacion de datos
-def newArtist(artist):
+def newArtist(catalog: dict, artistName:str):
     pass
 
-def newAlbum(album):
+def newAlbum(catalog: dict, albumName: str):
     pass
 
-def newTrack(track):
+def newTrack(catalog: dict, trackName: str):
     pass
 
 # Funciones de consulta
