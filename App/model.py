@@ -24,6 +24,9 @@
  * Dario Correal - Version inicial
  """
 
+from multiprocessing.dummy import Array
+
+from numpy import array, imag
 import config as cf
 from DISClib.ADT import list as lt
 from DISClib.Algorithms.Sorting import shellsort as sa
@@ -70,28 +73,29 @@ def addArtist(catalog: dict,artistName: str):
     #Aca añadir las sublistas necesarias de los artistas
     return catalog
 
-def addAlbum(catalog: dict,albumName:str):
+def addAlbum(catalog: dict,albumName:str) ->None:
     albums=catalog['albums']
     t=newAlbum(catalog, albumName)
 
-def addArtist(catalog: dict, artist: dict):
-    pass
-
-def addAlbum(catalog, album):
-    pass
-
-def addTrack(catalog,track):
-    pass
-
-
-
-
 # Funciones para creacion de datos
-def newArtist(catalog: dict, artistName:str):
-    pass
+def newArtist(artist_popularity: float,followers: int,genres: str,id:str,name:str,track_id:str):
+    artist={'artist_popularity':0,'followers':0,'genres':"",'id':"",'name':"",'track_id':""}
+    artist['name'] =name
+    artist['albums']=lt.newList('ARRAY_LIST')
+    return artist
 
-def newAlbum(catalog: dict, albumName: str):
-    pass
+def newAlbum(album_type: str,artist_id: str,avaible_markets: lt,external_urls: str,id:str,images: lt,name:str,release_date: str, total_track: int,track_id:str):
+    album={'album_type':"",'artist_id':"",'avaible_markets':None,'external_urls':"",'id':"",'images':None,'name':"",'release_date':"",'total_tracks':0,'track_id':""}
+    album['album_type']=album_type
+    album['artist_id']=artist_id
+    album['avaible_markets']=avaible_markets
+    album['external_urls']=external_urls
+    album['id']=id
+    album['images']=images
+    album['name']=name
+    album['release_date']=release_date
+    album['total_track']=total_track
+    album['track_id']=track_id
 
 def newTrack(catalog: dict, trackName: str):
     pass
